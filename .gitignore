@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /client/node_modules
+/client/src/startbootstrap-sb-admin-2-gh-pages
 /.pnp
 .pnp.js
 
