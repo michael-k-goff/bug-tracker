@@ -26,7 +26,7 @@ const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMe
     return (
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             {!isAuthenticated && (
-                <button onClick={() => loginWithRedirect({})}>Log in</button>
+                <button onClick={() => loginWithRedirect({})} className="btn btn-primary">Log in</button>
             )}
 
             {/* NEW - add a link to the home and profile pages */}

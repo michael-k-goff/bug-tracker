@@ -113,7 +113,9 @@ const Dashboard = () => {
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-xl-6 col-lg-7">
-                                    <p>Not logged in</p>
+                                    <p>Welcome to the Bug Tracker. Log in to get started.</p>
+                                    <p>For more instructions or information on the project, see the <a href="https://github.com/michael-k-goff/bug-tracker" target="_blank">GitHub</a> repo.</p>
+                                    <p>For more about the developer, see my <a href="https://github.com/michael-k-goff" target="_blank">GitHub</a> and <a href="https://michael-k-goff.github.io/" target="_blank">portfolio</a> pages.</p>
                                 </div>
                             </div>
                         </div>
@@ -247,6 +249,25 @@ const Sidebar = ({teams, setTeams, teamsMembership, setTeamsMembership, team, se
                 view={view}
                 setView={setView}
             />
+            <hr className="sidebar-divider my-0" />
+            <div className="sidebar-heading">
+                <b>About</b>
+            </div>
+            <li className="nav-item">
+                <a className="nav-link" href="https://github.com/michael-k-goff/bug-tracker" target="_blank">
+                    <span>This project on GitHub</span>
+                </a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link" href="https://github.com/michael-k-goff" target="_blank">
+                    <span>Michael's GitHub page</span>
+                </a>
+            </li>
+            <li className="nav-item">
+                <a className="nav-link" href="https://michael-k-goff.github.io/" target="_blank">
+                    <span>Michael's software portfolio</span>
+                </a>
+            </li>
         </ul>
     )
 }
