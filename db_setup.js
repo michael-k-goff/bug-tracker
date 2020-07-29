@@ -1,13 +1,9 @@
 // A script to reset the database for the bug tracker project to some preset values.
 
 const Pool = require('pg').Pool
-const pool = new Pool({
-    user: 'me',
-    host: 'localhost',
-    database: 'api',
-    password: 'password',
-    port: 5432,
-});
+const credentials = require('./credentials');
+
+const pool = new Pool(credentials.credentials);
 
 async function make_db() {
 	// Users

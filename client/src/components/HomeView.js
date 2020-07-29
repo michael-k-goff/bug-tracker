@@ -1,7 +1,7 @@
 // src/components/HomeView.js
 // The main panel for the home screen
 
-import React, { Fragment, Component, useState, useEffect } from "react";
+import React from "react";
 
 const HomeView = ({user, teams, setTeams, waiting, setWaiting}) => {
     if (!user) {

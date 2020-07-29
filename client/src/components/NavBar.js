@@ -1,13 +1,11 @@
 // src/components/NavBar.js
 
-import React, { Fragment, Component, useState, useEffect } from "react";
+import React, {useState} from "react";
 import { useAuth0 } from "../react-auth0-spa";
 
-// NEW - import the Link component
-import { Link } from "react-router-dom";
-
-const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMembership}) => {
-    const { isAuthenticated, loginWithRedirect, logout, waiting, setWaiting } = useAuth0();
+const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMembership,
+    waiting, setWaiting}) => {
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
     const [isExpanded, setIsExpanded] = useState(false)
 
@@ -35,7 +33,7 @@ const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMe
 
                     {view === "Home" ?
                         <b>Home</b> :
-                        <a href="#" onClick={()=>(!waiting && setView("Home"))}>Home</a>
+                        <a href="# " onClick={()=>(!waiting && setView("Home"))}>Home</a>
                     }
 
                     <div className="topbar-divider d-none d-sm-block" />
@@ -43,7 +41,7 @@ const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMe
                     {view === "Team" ?
                         <b>Team: {team_name?team_name:"No team selected"}</b> :
                         team_name ?
-                            <a href="#" onClick={()=>(!waiting && setView("Team"))}>Team: {team_name}</a> :
+                            <a href="# " onClick={()=>(!waiting && setView("Team"))}>Team: {team_name}</a> :
                             <i>Team: No team selected</i>
                     }
 
@@ -52,7 +50,7 @@ const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMe
                     {view === "Project" ?
                         <b>Team: {project_name?project_name:"No project selected"}</b> :
                         project_name ?
-                            <a href="#" onClick={()=>(!waiting && setView("Project"))}>Project: {project_name}</a> :
+                            <a href="# " onClick={()=>(!waiting && setView("Project"))}>Project: {project_name}</a> :
                             <i>Project: No project selected</i>
                     }
                 </ul>
@@ -63,7 +61,7 @@ const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMe
                     <li className="nav-item dropdown no-arrow">
                         <a
                                 className="nav-link dropdown-toggle"
-                                href="#" id="userDropdown"
+                                href="# " id="userDropdown"
                                 role="button"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
@@ -82,7 +80,7 @@ const NavBar = ({user, view, setView, team, teamsMembership, project, projectsMe
                             </div>
                         </a>
                         <div className={"dropdown-menu dropdown-menu-right shadow animated--grow-in"+ (isExpanded?" show":"")} aria-labelledby="userDropdown">
-                            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" onClick={() => logout()}>
+                            <a className="dropdown-item" href="# " data-toggle="modal" data-target="#logoutModal" onClick={() => logout()}>
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>

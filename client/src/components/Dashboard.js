@@ -1,7 +1,7 @@
 // src/components/Dashboard.js
 // Main dashboard component.
 
-import React, { Fragment, Component, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Teams from "./Teams";
 import Projects from "./Projects";
@@ -114,8 +114,8 @@ const Dashboard = () => {
                             <div className="row">
                                 <div className="col-xl-6 col-lg-7">
                                     <p>Welcome to the Bug Tracker. Log in to get started.</p>
-                                    <p>For more instructions or information on the project, see the <a href="https://github.com/michael-k-goff/bug-tracker" target="_blank">GitHub</a> repo.</p>
-                                    <p>For more about the developer, see my <a href="https://github.com/michael-k-goff" target="_blank">GitHub</a> and <a href="https://michael-k-goff.github.io/" target="_blank">portfolio</a> pages.</p>
+                                    <p>For more instructions or information on the project, see the <a href="https://github.com/michael-k-goff/bug-tracker" target="_blank" rel="noopener noreferrer">GitHub</a> repo.</p>
+                                    <p>For more about the developer, see my <a href="https://github.com/michael-k-goff" target="_blank" rel="noopener noreferrer">GitHub</a> and <a href="https://michael-k-goff.github.io/" target="_blank" rel="noopener noreferrer">portfolio</a> pages.</p>
                                 </div>
                             </div>
                         </div>
@@ -134,9 +134,6 @@ const Dashboard = () => {
 
     // Derive teams that one is a member of but not the lead.
     const lead_ids = JSON.parse(teams) ? JSON.parse(teams).map((x)=>x.id) : [];
-    const teams_not_members = JSON.parse(teamsMembership) ?
-        JSON.parse(teamsMembership).filter((x)=>lead_ids.indexOf(x.id)===-1) :
-        [];
     const is_team_leader = lead_ids.indexOf(team) >= 0; // Leader of currently selected team
 
     return (
@@ -191,7 +188,6 @@ const Dashboard = () => {
                             setProjectsMembership={setProjectsMembership}
                             updateCount={updateCount}
                             setUpdateCount={setUpdateCount}
-                            view={view}
                             setView={setView}
                             setTeams={setTeams}
                             setTeam={setTeam}
@@ -233,7 +229,7 @@ const Dashboard = () => {
 const Sidebar = ({teams, setTeams, teamsMembership, setTeamsMembership, team, setTeam, view, setView}) => {
     return (
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="# ">
                 <div className="sidebar-brand-text mx-3">
                     Bug Tracker
                 </div>
@@ -254,17 +250,17 @@ const Sidebar = ({teams, setTeams, teamsMembership, setTeamsMembership, team, se
                 <b>About</b>
             </div>
             <li className="nav-item">
-                <a className="nav-link" href="https://github.com/michael-k-goff/bug-tracker" target="_blank">
+                <a className="nav-link" href="https://github.com/michael-k-goff/bug-tracker" target="_blank" rel="noopener noreferrer">
                     <span>This project on GitHub</span>
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="https://github.com/michael-k-goff" target="_blank">
+                <a className="nav-link" href="https://github.com/michael-k-goff" target="_blank" rel="noopener noreferrer">
                     <span>Michael's GitHub page</span>
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="https://michael-k-goff.github.io/" target="_blank">
+                <a className="nav-link" href="https://michael-k-goff.github.io/" target="_blank" rel="noopener noreferrer">
                     <span>Michael's software portfolio</span>
                 </a>
             </li>

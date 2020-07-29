@@ -1,8 +1,7 @@
 // src/components/TeamMembers.js
 // Component that allows the team leader to manage team members.
 
-import React, { Fragment, Component, useState, useEffect } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import React, { Fragment, useState, useEffect } from "react";
 
 const TeamMembers = ({team, teams, user, teamMembers, setTeamMembers, waiting, setWaiting}) => {
     const [updateCount, setUpdateCount] = useState(0);
@@ -21,7 +20,7 @@ const TeamMembers = ({team, teams, user, teamMembers, setTeamMembers, waiting, s
             setTeamMembers(my_members.express);
         }
         getMembers();
-    },[user, team, teams, updateCount]);
+    },[user, team, teams, updateCount, setTeamMembers]);
 
     // Determine if the user is the leader of the current team
     let is_leader = 0;
@@ -151,17 +150,17 @@ class AddMemberToTeamEmail extends React.Component {
             body:JSON.stringify({user:this.props.user, team:this.props.team, memberemail: this.state.memberemail})
         }).then(response=>response.json()).then(data => {
             if (data.express === "No such member found.") {
-                this.state.message = "No user with email "+this.state.memberemail + " found.";
-                this.state.messageStatus = "Failure";
+                this.setState({message: "No user with email "+this.state.memberemail + " found."});
+                this.setState({messageStatus: "Failure"});
             }
             else {
-                this.state.message = "The user with email " + this.state.memberemail + " added to the team.";
-                this.state.messageStatus = "Success";
+                this.setState({message: "The user with email " + this.state.memberemail + " added to the team."});
+                this.setState({messageStatus: "Success"});
             }
             for (let i = 0; i<JSON.parse(this.props.teamMembers).length; i++) {
                 if (this.state.memberemail === JSON.parse(this.props.teamMembers)[i].email) {
-                    this.state.message = "The user with email" + this.state.memberemail + " is already on the team.";
-                    this.state.messageStatus = "Failure";
+                    this.setState({message: "The user with email" + this.state.memberemail + " is already on the team."});
+                    this.setState({messageStatus: "Failure"});
                 }
             }
             this.props.setUpdateCount(this.props.updateCount+1);
@@ -211,17 +210,17 @@ class AddMemberToTeam extends React.Component {
             body:JSON.stringify({user:this.props.user, team:this.props.team, membername: this.state.membername})
         }).then(response=>response.json()).then(data => {
             if (data.express === "No such member found.") {
-                this.state.message = "No user "+this.state.membername + " found.";
-                this.state.messageStatus = "Failure";
+                this.setState({message: "No user "+this.state.membername + " found."});
+                this.setState({messageStatus: "Failure"});
             }
             else {
-                this.state.message = this.state.membername + " added to the team.";
-                this.state.messageStatus = "Success";
+                this.setState({message: this.state.membername + " added to the team."});
+                this.setState({messageStatus: "Success"});
             }
             for (let i = 0; i<JSON.parse(this.props.teamMembers).length; i++) {
                 if (this.state.membername === JSON.parse(this.props.teamMembers)[i].name) {
-                    this.state.message = this.state.membername + " is already on the team.";
-                    this.state.messageStatus = "Failure";
+                    this.setState({message: this.state.membername + " is already on the team."});
+                    this.setState({messageStatus: "Failure"});
                 }
             }
             this.props.setUpdateCount(this.props.updateCount+1);

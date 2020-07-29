@@ -1,9 +1,8 @@
 // src/components/Teams.js
 // Component that displays list of teams
 
-import React, { Fragment, Component, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import Projects from "./Projects";
 
 const Teams = ({teams, setTeams, teamsMembership, setTeamsMembership, team, setTeam, view, setView, waiting, setWaiting}) => {
     const { loading, user } = useAuth0();
@@ -14,7 +13,7 @@ const Teams = ({teams, setTeams, teamsMembership, setTeamsMembership, team, setT
 
     if (!user || !teams || !teamsMembership) {
         return <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="# ">
                 <span>Not logged in</span>
             </a>
         </li>
@@ -25,7 +24,6 @@ const Teams = ({teams, setTeams, teamsMembership, setTeamsMembership, team, setT
     const teams_not_members = JSON.parse(teamsMembership) ?
         JSON.parse(teamsMembership).filter((x)=>lead_ids.indexOf(x.id)===-1) :
         [];
-    const is_team_leader = lead_ids.indexOf(team) >= 0; // Leader of currently selected team
 
     return (
         <Fragment>
@@ -108,7 +106,7 @@ const TeamButton = ({team, setTeam, view, setView, waiting, setWaiting}) => {
     }
     return (
         <li className="nav-item" onClick={handleClick}>
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="# ">
                 <span>{team.name}</span>
             </a>
         </li>

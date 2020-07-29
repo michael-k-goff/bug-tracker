@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
-import { useAuth0 } from "./react-auth0-spa";
 
 // New - import the React Router components, and the Profile page component
 import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile";
-import Teams from "./components/Teams";
 import Dashboard from "./components/Dashboard";
 import history from "./utils/history";
 
 // NEW - import the PrivateRoute component
 import PrivateRoute from "./components/PrivateRoute";
 
-import logo from './logo.svg';
 import './startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css';
 
 class App extends Component {

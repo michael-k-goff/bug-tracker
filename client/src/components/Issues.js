@@ -1,12 +1,12 @@
 // src/components/Issues.js
 // Component that displays list of issues for a given project
 
-import React, { Fragment, Component, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 
 const Issues = ({project, projectlead, teamMembers, projectsMembership,
     updateCountProject, setUpdateCountProject, setProject, setView, is_team_leader, waiting, setWaiting}) => {
-    const { loading, user } = useAuth0();
+    const { user } = useAuth0();
     const [issues, setIssues] = useState(0);
     const [userID, setUserID] = useState(0);
     const [updateCount, setUpdateCount] = useState(0);
@@ -26,7 +26,7 @@ const Issues = ({project, projectlead, teamMembers, projectsMembership,
             setWaiting(0);
         }
         getIssues();
-    },[user, project, updateCount])
+    },[user, project, updateCount, setWaiting])
 
     useEffect(() => {
         setWaiting(1);
@@ -45,7 +45,7 @@ const Issues = ({project, projectlead, teamMembers, projectsMembership,
             setWaiting(0);
         }
         getUserID();
-    },[user])
+    },[user, setWaiting])
 
     const issues_array = issues ? JSON.parse(issues) : [];
 
@@ -53,15 +53,6 @@ const Issues = ({project, projectlead, teamMembers, projectsMembership,
     let members_by_id = {}
     for (let i=0; i<JSON.parse(teamMembers).length; i++) {
         members_by_id[JSON.parse(teamMembers)[i].id] = JSON.parse(teamMembers)[i]
-    }
-
-    // Current project name
-    let project_name = "";
-    if (project && projectsMembership) {
-        let filtered = JSON.parse(projectsMembership).filter((x)=>x.id===project);
-        if (filtered.length) {
-            project_name = JSON.parse(projectsMembership).filter((x)=>x.id===project)[0].name
-        }
     }
 
     return (
@@ -325,7 +316,7 @@ class NewIssueForm extends React.Component {
 
     render () {
         if (JSON.parse(this.props.teamMembers).length && !this.state.owner) {
-            this.state.owner = JSON.parse(this.props.teamMembers)[0].id;
+            this.setState({owner: JSON.parse(this.props.teamMembers)[0].id});
         }
         return (
             <div className="col-xl-6 col-lg-5">

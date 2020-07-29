@@ -1,30 +1,21 @@
 // src/components/Projects.js
 // Component that displays list of projects
 
-import React, { Fragment, Component, useState, useEffect } from "react";
+import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import Issues from './Issues';
 import TeamMembers from "./TeamMembers";
 
 const Projects = ({team, teams, is_team_leader,
     project, setProject, projectlead, setProjectlead, teamMembers, setTeamMembers,
     projects, setProjects, projectsMembership, setProjectsMembership,
     updateCount, setUpdateCount, view, setView, setTeams, setTeam, waiting, setWaiting}) => {
-    const { loading, user } = useAuth0();
+    const { user } = useAuth0();
 
     // Derive projects that one is a member of but not the lead.
     const lead_ids = JSON.parse(projects) ? JSON.parse(projects).map((x)=>x.id) : [];
     const projects_not_members = JSON.parse(projectsMembership) ?
         JSON.parse(projectsMembership).filter((x)=>lead_ids.indexOf(x.id)===-1) :
         [];
-
-    let project_name = "";
-    if (project && projectsMembership) {
-        let filtered = JSON.parse(projectsMembership).filter((x)=>x.id===project);
-        if (filtered.length) {
-            project_name = JSON.parse(projectsMembership).filter((x)=>x.id===project)[0].name
-        }
-    }
 
     return (
         <div className="container-fluid">
@@ -268,7 +259,7 @@ class NewProjectForm extends React.Component {
 
     render () {
         if (JSON.parse(this.props.teamMembers).length && !this.state.projectlead) {
-            this.state.projectlead = 0;
+            this.setState({projectlead: 0});
         }
         return (
             <div className="col-xl-6 col-lg-7">
