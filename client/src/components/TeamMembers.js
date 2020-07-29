@@ -8,7 +8,7 @@ const TeamMembers = ({team, teams, user, teamMembers, setTeamMembers, waiting, s
 
     useEffect(()=> {
         async function getMembers() {
-            const response = await fetch('/team_members',{
+            const response = await fetch('http://54.200.109.3:5000/team_members',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ const TeamMembers = ({team, teams, user, teamMembers, setTeamMembers, waiting, s
             setTeamMembers(my_members.express);
         }
         getMembers();
-    },[user, team, teams, updateCount, setTeamMembers]);
+    },[user, team, teams, updateCount]);
 
     // Determine if the user is the leader of the current team
     let is_leader = 0;
@@ -142,7 +142,7 @@ class AddMemberToTeamEmail extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('/add_member_email',{
+        fetch('http://54.200.109.3:5000/add_member_email',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ class AddMemberToTeam extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('/add_member',{
+        fetch('http://54.200.109.3:5000/add_member',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ class MemberRemoveButton extends React.Component {
     }
 
     handleClick() {
-        fetch('/remove_member',{
+        fetch('http://54.200.109.3:5000/remove_member',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
