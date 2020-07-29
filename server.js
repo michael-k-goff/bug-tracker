@@ -1,12 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./queries');
+const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
@@ -42,5 +46,16 @@ app.post('/add_member',db.add_member)
 app.post('/add_member_email',db.add_member_email)
 app.post('/new_issue',db.new_issue)
 app.post('/close_issue',db.close_issue)
+
+// serve the API with signed certificate on 443 (SSL/HTTPS) port
+const httpsServer = https.createServer({
+    key: fs.readFileSync('../key.pem'),
+    cert: fs.readFileSync('../cert.pem'),
+    passphrase: 'asdf'
+}, app);
+
+httpsServer.listen(5001, () => {
+    console.log('HTTPS Server running on port 5001');
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
