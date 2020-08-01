@@ -14,7 +14,7 @@ const Issues = ({project, projectlead, teamMembers, projectsMembership,
     useEffect(()=> {
         setWaiting(1);
         async function getIssues() {
-            const response = await fetch('http://54.200.109.3:5000/issues',{
+            const response = await fetch('https://54.200.109.3:5001/issues',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const Issues = ({project, projectlead, teamMembers, projectsMembership,
     useEffect(() => {
         setWaiting(1);
         async function getUserID() {
-            const response = await fetch('http://54.200.109.3:5000/get_id',{
+            const response = await fetch('https://54.200.109.3:5001/get_id',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ class ProjectDeleteButton extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/delete_project',{
+        fetch('https://54.200.109.3:5001/delete_project',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ class Issue extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/close_issue',{
+        fetch('https://54.200.109.3:5001/close_issue',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -302,7 +302,7 @@ class NewIssueForm extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/new_issue',{
+        fetch('https://54.200.109.3:5001/new_issue',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',

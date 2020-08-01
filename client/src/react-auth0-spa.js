@@ -35,7 +35,7 @@ export const Auth0Provider = ({
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
         // Save the new user to the database if not already present.
-        await fetch('http://54.200.109.3:5000/add_user',{
+        await fetch('https://54.200.109.3:5001/add_user',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',

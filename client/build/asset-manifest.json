@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bt-frontend/static/css/main.14a678a0.chunk.css",
+    "main.js": "/bt-frontend/static/js/main.e5bf2fa0.chunk.js",
+    "main.js.map": "/bt-frontend/static/js/main.e5bf2fa0.chunk.js.map",
+    "runtime-main.js": "/bt-frontend/static/js/runtime-main.953d0c3b.js",
+    "runtime-main.js.map": "/bt-frontend/static/js/runtime-main.953d0c3b.js.map",
+    "static/js/2.968b86f5.chunk.js": "/bt-frontend/static/js/2.968b86f5.chunk.js",
+    "static/js/2.968b86f5.chunk.js.map": "/bt-frontend/static/js/2.968b86f5.chunk.js.map",
+    "index.html": "/bt-frontend/index.html",
+    "precache-manifest.04c140f61bbee4e2812e320f9de37701.js": "/bt-frontend/precache-manifest.04c140f61bbee4e2812e320f9de37701.js",
+    "service-worker.js": "/bt-frontend/service-worker.js",
+    "static/css/main.14a678a0.chunk.css.map": "/bt-frontend/static/css/main.14a678a0.chunk.css.map",
+    "static/js/2.968b86f5.chunk.js.LICENSE": "/bt-frontend/static/js/2.968b86f5.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.953d0c3b.js",
+    "static/js/2.968b86f5.chunk.js",
+    "static/css/main.14a678a0.chunk.css",
+    "static/js/main.e5bf2fa0.chunk.js"
+  ]
+}

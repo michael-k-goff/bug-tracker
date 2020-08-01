@@ -26,7 +26,7 @@ const Dashboard = () => {
     useEffect(()=> {
         async function getTeams() {
             if (!user) {return}
-            const response = await fetch('http://54.200.109.3:5000/teams',{
+            const response = await fetch('https://54.200.109.3:5001/teams',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const Dashboard = () => {
             });
             const my_teams = await response.json();
 
-            const response_by_membership = await fetch('http://54.200.109.3:5000/teams_by_membership',{
+            const response_by_membership = await fetch('https://54.200.109.3:5001/teams_by_membership',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const Dashboard = () => {
     useEffect(()=> {
         async function getProjects() {
             if (!user) {return}
-            const response = await fetch('http://54.200.109.3:5000/projects',{
+            const response = await fetch('https://54.200.109.3:5001/projects',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const Dashboard = () => {
             });
             const my_projects = await response.json();
 
-            const response_by_membership = await fetch('http://54.200.109.3:5000/projects_by_membership',{
+            const response_by_membership = await fetch('https://54.200.109.3:5001/projects_by_membership',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',

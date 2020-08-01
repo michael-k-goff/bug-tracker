@@ -8,7 +8,7 @@ const TeamMembers = ({team, teams, user, teamMembers, setTeamMembers, waiting, s
 
     useEffect(()=> {
         async function getMembers() {
-            const response = await fetch('http://54.200.109.3:5000/team_members',{
+            const response = await fetch('https://54.200.109.3:5001/team_members',{
                 method:"POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ class AddMemberToTeamEmail extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/add_member_email',{
+        fetch('https://54.200.109.3:5001/add_member_email',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ class AddMemberToTeam extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/add_member',{
+        fetch('https://54.200.109.3:5001/add_member',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ class MemberRemoveButton extends React.Component {
     }
 
     handleClick() {
-        fetch('http://54.200.109.3:5000/remove_member',{
+        fetch('https://54.200.109.3:5001/remove_member',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',

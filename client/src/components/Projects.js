@@ -126,7 +126,7 @@ class TeamDeleteButton extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/delete_team',{
+        fetch('https://54.200.109.3:5001/delete_team',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -245,7 +245,7 @@ class NewProjectForm extends React.Component {
 
         const lead_id = JSON.parse(this.props.teamMembers)[this.state.projectlead].id
 
-        fetch('http://54.200.109.3:5000/new_project',{
+        fetch('https://54.200.109.3:5001/new_project',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',

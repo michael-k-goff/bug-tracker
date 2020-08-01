@@ -53,7 +53,7 @@ class NewTeamForm extends React.Component {
         if (this.props.waiting) {return}
         this.props.setWaiting(1);
 
-        fetch('http://54.200.109.3:5000/new_team',{
+        fetch('https://54.200.109.3:5001/new_team',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json',
