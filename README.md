@@ -1,6 +1,6 @@
 # Bug Tracker
 
-This project is a system for teams to track bugs and other issues on a project-by-project basis. The app can be used [here](https://michael-k-goff.github.io/bt-frontend/).
+This project is a system for teams to track bugs and other issues on a project-by-project basis.
 
 ## Instructions
 
